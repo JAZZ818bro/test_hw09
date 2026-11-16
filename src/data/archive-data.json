@@ -1,0 +1,356 @@
+{
+  "generatedAt": "2026-11-16T16:04:12.780Z",
+  "stats": {
+    "totalIncidents": 2,
+    "totalTechniques": 3,
+    "totalVulnerabilities": 2,
+    "totalResearchNotes": 2,
+    "totalSources": 12
+  },
+  "incidents": [
+    {
+      "id": "2024-02-21-change-healthcare-ransomware",
+      "folderName": "2024-02-21-change-healthcare-ransomware",
+      "year": "2024",
+      "title": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件",
+      "date": "2024-02-21",
+      "discoveryDate": "2024-02-21",
+      "target": "Change Healthcare (UnitedHealth Group 旗下子公司)",
+      "industry": "醫療健康、金融與保險結算",
+      "severity": "Critical",
+      "evidenceStatus": "confirmed",
+      "cve": [],
+      "threatActor": "ALPHV / BlackCat 勒索軟體組織",
+      "tags": [
+        "Ransomware",
+        "Credential-Stuffing",
+        "No-MFA",
+        "Supply-Chain",
+        "Healthcare"
+      ],
+      "summary": "攻擊者利用遭外洩之員工帳號憑證，直接登入未啟用多因素驗證 (MFA) 的 Citrix 遠端存取入口，並於內網潛伏橫向移動達 9 天，最終竊取數 TB 病患個資並部署 ALPHV/BlackCat 勒索軟體，重創全美醫療處方與保險核銷鏈。",
+      "validation": {
+        "hasOverview": true,
+        "hasTimeline": true,
+        "hasThreatApproach": true,
+        "hasTechAnalysis": true,
+        "hasImpact": true,
+        "hasDefense": true,
+        "hasLessons": true,
+        "hasReferences": true
+      },
+      "extractedSources": [
+        {
+          "title": "UnitedHealth Group Update on Change Healthcare Cyberattack",
+          "url": "https://www.unitedhealthgroup.com/ns/changehealthcare.html",
+          "note": "UHG 官方更新公告，發布日期：2024-02-22",
+          "incidentId": "2024-02-21-change-healthcare-ransomware",
+          "incidentTitle": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件"
+        },
+        {
+          "title": "Senate Finance Committee Hearing: Examining the Cyberattack on UnitedHealth Group",
+          "url": "https://www.finance.senate.gov/hearings/examining-the-cyberattack-on-change-healthcare",
+          "note": "美國參議院財政委員會聽證紀錄，發布日期：2024-05-01",
+          "incidentId": "2024-02-21-change-healthcare-ransomware",
+          "incidentTitle": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件"
+        },
+        {
+          "title": "CISA Cybersecurity Advisory: ALPHV/BlackCat Ransomware",
+          "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-353a",
+          "note": "CISA / FBI Joint Advisory，發布日期：2023-12-19",
+          "incidentId": "2024-02-21-change-healthcare-ransomware",
+          "incidentTitle": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件"
+        },
+        {
+          "title": "Mandiant Incident Response Insights into Recent Health Sector Attacks",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "note": "Google Cloud Mandiant，發布日期：2024-03-15",
+          "incidentId": "2024-02-21-change-healthcare-ransomware",
+          "incidentTitle": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件"
+        },
+        {
+          "title": "UnitedHealth CEO Tells Congress One Server Lacked Multi-Factor Authentication",
+          "url": "https://krebsonsecurity.com/2024/05/unitedhealth-ceo-tells-congress-one-server-lacked-mfa/",
+          "note": "Krebs on Security，發布日期：2024-05-01",
+          "incidentId": "2024-02-21-change-healthcare-ransomware",
+          "incidentTitle": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件"
+        },
+        {
+          "title": "Change Healthcare Ransomware Fallout: What You Need to Know",
+          "url": "https://www.bleepingcomputer.com/news/security/change-healthcare-cyberattack-what-we-know-so-far/",
+          "note": "BleepingComputer，發布日期：2024-03-05",
+          "incidentId": "2024-02-21-change-healthcare-ransomware",
+          "incidentTitle": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件"
+        }
+      ],
+      "sections": {
+        "index": "\n# Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件\n\n## 01. 事件概述\n- **事件發生時間**：2024 年 2 月 12 日攻擊者首次成功利用外洩憑證登入 Citrix 系統，2024-02-21 啟動大規模勒索軟體加密。 `[已確認事實]`\n- **事件發生對象**：Change Healthcare（隸屬美國最大醫療集團 UnitedHealth Group，處理全美約三分之一的醫療處方與保險申報結算）。 `[已確認事實]`\n- **事件簡介與影響**：威脅組織 ALPHV/BlackCat 利用被盜的外洩憑證侵入未設置多因素驗證 (MFA) 的遠端存取網關，在內網橫向移動、傾印特權憑證並竊取大量病患敏感健康數據（PHI/PII）。2 月 21 日清晨全面部署加密程式，迫使 Change Healthcare 中斷全國性交易系統，導致全美數千家醫院、診所及藥局無法驗證處方箋或請領健保補助款。 `[已確認事實]`\n\n## 05. 影響與損害\n- **受影響系統**：核心醫療支付交換平台、處方箋即時核准系統、電子病歷（EDI）網路與內部 Active Directory 網域伺服器。 `[已確認事實]`\n- **資料外洩情況**：\n  - 估計波及全美多達三分之一人口（約 1 億名病患）之醫療記錄、處方記錄、社會安全碼（SSN）與銀行財務資訊。 `[已確認事實]`\n  - 外洩資料總量估計達 4TB 以上。 `[已確認事實]`\n- **財務或營運損失**：\n  - 母公司 UnitedHealth Group 支付了 2,200 萬美元（約 350 枚比特幣）贖金。 `[已確認事實]`\n  - 事故總復原、墊款支援與法律合規成本超過 20 億美元。 `[已確認事實]`\n- **其他影響**：引發美國國會聽證會調查、衛生與公共服務部（HHS）強制民權調查，並使全美醫療體系將關鍵第三方服務商單點故障（SPOF）列為最高營運風險。 `[已確認事實]`\n\n## 06. 防禦與改善\n- **官方應對措施**：\n  - 事故發生後立即中斷對外網路連線，並設立緊急墊款專案（提供超過 60 億美元流動性給受困診所）。 `[已確認事實]`\n  - 聘請 Mandiant 與 Palo Alto Networks 進行全面鑑識調查與系統重構。 `[已確認事實]`\n- **漏洞修補方式**：\n  - 由於入侵途徑非軟體弱點而是憑證濫用，修復重心在於強制推行全企業級多因素驗證 (MFA)。 `[已確認事實]`\n  - 徹底重設全部企業目錄密碼與內部服務連線憑證。 `[已確認事實]`\n- **後續改善**：\n  - 汰除遺留之舊型遠端存取入口，所有外網存取一律受零信任存取閘道（ZTNA）強制 MFA 與裝置合規檢驗管制。 `[已確認事實]`\n  - 實施網路分段（Network Segmentation），將醫療資料處理專區與通用辦公網路完全隔離。 `[已確認事實]`\n",
+        "timeline": "# Change Healthcare 事件時間軸\n\n## 02. 事件時間軸\n\n> 以下時間軸彙整自 UnitedHealth Group CEO 國會證詞、CISA 警報與各大鑑識報告。\n\n| 時間點 (UTC-5) | 事件階段 | 詳細活動與說明 | 證據狀態 | 來源依據 |\n|---|---|---|---|---|\n| 2024-02-12 11:00 | 攻擊開始時間 | 攻擊者利用遭竊的合法員工帳密，成功登入未啟用 MFA 的 Citrix 入口 | `[已確認事實]` | UHG 國會聽證會正式證詞 |\n| 2024-02-12 ~ 02-20 | 內網潛伏與資料打包 | 攻擊者橫向移動長達 9 天，獲取網域管理權限並打包數 TB 敏感醫療個資 | `[已確認事實]` | Mandiant 調查結論 |\n| 2024-02-21 02:00 | 攻擊被發現時間 | ALPHV 勒索軟體在數千台伺服器上同時啟動檔案加密，系統監控告警暴增 | `[已確認事實]` | Change Healthcare 事故報告 |\n| 2024-02-21 05:30 | 官方公告時間 | Change Healthcare 於官方狀態頁面公告發生企業網路安全事件並切斷系統 | `[已確認事實]` | 官方系統狀態即時更新 |\n| 2024-02-28 | 組織公開認領 | ALPHV/BlackCat 勒索組織在其暗網外洩站點公開宣稱對本次攻擊負責 | `[已確認事實]` | 暗網威脅情資監控 |\n| 2024-03-01 | 贖金支付與退出騙局 | UHG 支付 2,200 萬美元贖金；但 ALPHV 核心團隊捲款跑路（Exit Scam），未將贖金分給操作附屬成員 | `[已確認事實]` | 區塊鏈鏈上追蹤與外洩日誌 |\n| 2024-03-07 | 核心服務逐步恢復 | 處方箋即時核准網絡開始重建並逐步重啟營運 | `[已確認事實]` | UHG 官方恢復時程表 |\n| 2024-05-01 | 國會聽證說明 | UHG 執行長出席參議院聽證會，正式承認因遺留入口無 MFA 導致事件爆發 | `[已確認事實]` | 美國參議院財政委員會聽證紀錄 |\n",
+        "technicalAnalysis": "# Change Healthcare 攻擊手法與技術分析\n\n## 03. 攻擊手法\n- **初始入侵途徑**：\n  - 攻擊者未利用任何未知的 0-day 漏洞，而是直接使用由暗網竊密日誌（Infostealer Logs）中取得的有效員工帳號與密碼。 `[已確認事實]`\n  - 目標 Citrix 遠端存取 Portal 缺乏多因素驗證 (MFA)，致使攻擊者單憑一組憑證即順利通過外圍邊界認證。 `[已確認事實]`\n- **攻擊者使用的技術 (MITRE ATT&CK)**：\n  - `T1078` - Valid Accounts（有效帳號濫用）\n  - `T1133` - External Remote Services（外部遠端服務）\n  - `T1003` - OS Credential Dumping（LSASS 記憶體憑證竊取）\n  - `T1021.002` - Remote Services: SMB/Windows Admin Shares（透過 SMB 橫向移動）\n  - `T1567` - Exfiltration Over Web Service（透過雲端儲存向外洩露資料）\n  - `T1486` - Data Encrypted for Impact（資料加密癱瘓）\n- **攻擊執行流程**：\n  ```mermaid\n  flowchart TD\n      A[\"外洩帳號憑證 (Infostealer 取得)\"] --> B[\"登入無 MFA 的 Citrix 遠端服務\"]\n      B --> C[\"LSASS 憑證傾印取得 Domain Admin\"]\n      C --> D[\"持續 9 天收集並打包 4TB 醫療資料\"]\n      D --> E[\"透過 Rclone 滲漏資料至外網雲端儲存\"]\n      E --> F[\"透過 PsExec/GPO 批量分發 ALPHV 勒索軟體\"]\n      F --> G[\"大規模加密檔案並切斷醫療結算平台\"]\n  ```\n- **使用的惡意程式或工具**：\n  - **ALPHV / BlackCat 勒索軟體**：使用 Rust 語言撰寫的高性能多執行緒加密器，支援 AES-256 與 ChaCha20。 `[已確認事實]`\n  - **Rclone / MegaCmd**：用於高速加密傳輸並滲漏大量病患個資的合法雲端管理工具（Living off the Land）。 `[已確認事實]`\n  - **PsExec & Cobalt Strike Beacon**：用於在內網橫向分發載荷與建立交互式命令連線。 `[已確認事實]`\n\n## 04. 技術分析\n- **漏洞或攻擊技術**：\n  - 本事件無對應 CVE，其致命弱點在於**身分識別與存取管理（IAM）政策嚴重缺失**與**缺乏多因素驗證機制**。\n  - 由於未對外部遠端存取強制推行 FIDO2 / TOTP，使得攻擊者能利用普通員工憑證直接穿透邊界。\n- **IOC（入侵指標）**：\n  - **勒索加密副檔名**：`.alphv` / 隨機 7 碼英數後綴\n  - **勒索信檔案名稱**：`RECOVER-README.txt`\n  - **惡意二進位雜湊 (SHA256)**：\n    - `0d3a54d3ebf6869a8449e7bdf51a707a2a0ffeb1e29e9d6d5ef0d279cf4f828a` (BlackCat Rust Encryptor)\n    - `8a25c345a0b12bc129031ef1e479a024c6e94e21a719c8f9485b0d0c1598f80b` (Cobalt Strike Stager)\n  - **滲漏傳輸特徵**：\n    - 短時間內向公開網址 `*.mega.nz` 發起大量具規律之 HTTPS 出站封包。\n- **網路行為**：利用 SMB (445/TCP) 及 RPC 進行內網掃描與權限探索，並將資料以分塊壓縮檔傳送至外部匿名雲端儲存。 `[已確認事實]`\n- **系統與程序行為**：執行 `vssadmin delete shadows /all /quiet` 刪除 Windows 磁碟陰影複製，並終止各類 MSSQL、Oracle 與 Exchange 資料庫服務以解除檔案鎖定以利加密。 `[已確認事實]`\n",
+        "references": "# Change Healthcare 研究心得與參考資料\n\n## 07. 研究心得\n- **攻擊與修補技術**：\n  - 本事件印證了資安界的名言：「攻擊者不敲破窗戶，他們直接用鑰匙開門（Attackers don't break in, they log in）。」\n  - 即使企業投入大量預算購買高階防火牆或進階分析系統，只要留存一個未納入 MFA 控管的遺留邊界服務，整體的防護鏈條強度就僅取決於這顆最脆弱的螺絲釘。\n- **尚待釐清的問題**：\n  - 攻擊者取得的該組特定員工憑證，究竟源自於該員工私人電腦遭 Redline / Lumma Stealer 惡意程式感染，抑或是來自暗網先前的歷史憑證撞庫（Credential Stuffing），公開調查中並未明確揭示細部原始感染點。 `[尚待確認]`\n- **事件關聯性**：\n  - 本事件的初期入侵向量與 Colonial Pipeline 勒索事件（舊 VPN 帳號無 MFA）如出一轍。而 ALPHV 後續發生內部黑吃黑（Exit Scam），更凸顯了勒索軟體即服務（RaaS）生態系中附屬操作員與核心主謀間的信用風險。\n- **個人觀察**：\n  - 現代大型企業併購與組織整合過程中，IT 遺留資產（Legacy Systems）的盤點是極嚴峻的防禦盲區。MFA 必須具備 100% 強制性，任何例外申請都可能是災難的根源。\n\n## 08. 參考資料\n- **官方公告**：\n  - [UnitedHealth Group Update on Change Healthcare Cyberattack](https://www.unitedhealthgroup.com/ns/changehealthcare.html) - UHG 官方更新公告，發布日期：2024-02-22\n  - [Senate Finance Committee Hearing: Examining the Cyberattack on UnitedHealth Group](https://www.finance.senate.gov/hearings/examining-the-cyberattack-on-change-healthcare) - 美國參議院財政委員會聽證紀錄，發布日期：2024-05-01\n- **技術研究報告**：\n  - [CISA Cybersecurity Advisory: ALPHV/BlackCat Ransomware](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-353a) - CISA / FBI Joint Advisory，發布日期：2023-12-19\n  - [Mandiant Incident Response Insights into Recent Health Sector Attacks](https://cloud.google.com/blog/topics/threat-intelligence) - Google Cloud Mandiant，發布日期：2024-03-15\n- **新聞報導**：\n  - [UnitedHealth CEO Tells Congress One Server Lacked Multi-Factor Authentication](https://krebsonsecurity.com/2024/05/unitedhealth-ceo-tells-congress-one-server-lacked-mfa/) - Krebs on Security，發布日期：2024-05-01\n  - [Change Healthcare Ransomware Fallout: What You Need to Know](https://www.bleepingcomputer.com/news/security/change-healthcare-cyberattack-what-we-know-so-far/) - BleepingComputer，發布日期：2024-03-05\n"
+      }
+    },
+    {
+      "id": "2024-01-15-ivanti-connect-secure",
+      "folderName": "2024-01-15-ivanti-connect-secure",
+      "year": "2024",
+      "title": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件",
+      "date": "2024-01-10",
+      "discoveryDate": "2023-12-14",
+      "target": "全球數百家企業、國防承包商及政府機關",
+      "industry": "國防、政府、高科技與關鍵基礎設施",
+      "severity": "Critical",
+      "evidenceStatus": "confirmed",
+      "cve": [
+        "CVE-2023-46805",
+        "CVE-2024-21887"
+      ],
+      "threatActor": "UNC5221 (疑似具國家背景之高威脅組織)",
+      "tags": [
+        "0-day",
+        "VPN-Exploit",
+        "Web-Shell",
+        "Espionage"
+      ],
+      "summary": "攻擊者串聯 Ivanti Connect Secure VPN 設備之身份驗證繞過與命令注入漏洞，在未授權情況下取得系統 root 權限，隨後植入 Web Shell、竊取組態憑證並篡改內建完整性檢測機制以規避偵測。",
+      "validation": {
+        "hasOverview": true,
+        "hasTimeline": true,
+        "hasThreatApproach": true,
+        "hasTechAnalysis": true,
+        "hasImpact": true,
+        "hasDefense": true,
+        "hasLessons": true,
+        "hasReferences": true
+      },
+      "extractedSources": [
+        {
+          "title": "Ivanti Security Advisory: CVE-2023-46805 and CVE-2024-21887",
+          "url": "https://forums.ivanti.com/s/article/KB-CVE-2023-46805-Authentication-Bypass-CVE-2024-21887-Command-Injection-for-Ivanti-Connect-Secure-and-Ivanti-Policy-Secure-Gateways",
+          "note": "Ivanti Official, 發布日期：2024-01-10",
+          "incidentId": "2024-01-15-ivanti-connect-secure",
+          "incidentTitle": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件"
+        },
+        {
+          "title": "CISA Emergency Directive 24-01: Mitigate Ivanti Connect Secure and Ivanti Policy Secure Vulnerabilities",
+          "url": "https://www.cisa.gov/news-events/directives/ed-24-01-mitigate-ivanti-connect-secure-and-ivanti-policy-secure-vulnerabilities",
+          "note": "CISA, 發布日期：2024-01-19",
+          "incidentId": "2024-01-15-ivanti-connect-secure",
+          "incidentTitle": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件"
+        },
+        {
+          "title": "Active Exploitation of Two Zero-Day Vulnerabilities in Ivanti Connect Secure VPN",
+          "url": "https://www.volexity.com/blog/2024/01/10/active-exploitation-of-two-zero-day-vulnerabilities-in-ivanti-connect-secure-vpn/",
+          "note": "Volexity Threat Research, 發布日期：2024-01-10",
+          "incidentId": "2024-01-15-ivanti-connect-secure",
+          "incidentTitle": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件"
+        },
+        {
+          "title": "Suspected APT Targets Ivanti Connect Secure VPN in Global Campaign",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/investigating-ivanti-zero-day-exploitation",
+          "note": "Mandiant (Google Cloud), 發布日期：2024-01-12",
+          "incidentId": "2024-01-15-ivanti-connect-secure",
+          "incidentTitle": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件"
+        },
+        {
+          "title": "NVD - CVE-2023-46805 Detail",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-46805",
+          "note": "NIST NVD, 發布日期：2024-01-12",
+          "incidentId": "2024-01-15-ivanti-connect-secure",
+          "incidentTitle": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件"
+        },
+        {
+          "title": "NVD - CVE-2024-21887 Detail",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-21887",
+          "note": "NIST NVD, 發布日期：2024-01-12",
+          "incidentId": "2024-01-15-ivanti-connect-secure",
+          "incidentTitle": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件"
+        }
+      ],
+      "sections": {
+        "index": "\n# Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件\n\n## 01. 事件概述\n- **事件發生時間**：2023 年 12 月初即觀測到在野探測與利用跡象，受害者通報於 2024-01-10 經 Volexity 與 Ivanti 原廠公開確認。 `[已確認事實]`\n- **事件發生對象**：全球部署 Ivanti Connect Secure (ICS / 舊稱 Pulse Secure) 及 Policy Secure 網關之企業、國防國安組織與大型企業。 `[已確認事實]`\n- **事件簡介與影響**：威脅組織利用兩個零時差漏洞組合（CVE-2023-46805 身份驗證繞過 ＋ CVE-2024-21887 指令注入），無需任何帳號憑證即可遠端在 VPN 設備上執行任意程式碼。攻擊者更進一步修改內建 Python 程式碼、注入惡意 Web Shell（如 GLASSTOKEN、WIREFIRE），並竊取內存快取的 VPN 使用者連線憑證。 `[已確認事實]`\n\n## 05. 影響與損害\n- **受影響系統**：Ivanti Connect Secure 9.x、22.x 全版本，以及 Policy Secure 閘道系統。 `[已確認事實]`\n- **資料外洩情況**：\n  - 設備內存與資料庫中快取之 Active Directory (AD) 網域使用者帳號密碼。 `[已確認事實]`\n  - 設備組態檔、VPN 憑證、私鑰與會話 Token。 `[已確認事實]`\n  - 後續內網橫向移動造成的深層內部文件外洩狀況：因各受害企業環境而異，部分敏感外洩細節仍屬機密。 `[尚待確認]`\n- **財務或營運損失**：CISA 發布緊急指令 (ED 24-01) 要求美國聯邦機構拔除該設備網路連線並強制重構；全球企業投入數千萬美元進行緊急應變與鑑識調查。 `[已確認事實]`\n- **其他影響**：邊界網路架構信任遭受重創，促使企業加速轉向以零信任（Zero Trust Network Access, ZTNA）取代傳統集中式 SSL VPN。 `[已確認事實]`\n\n## 06. 防禦與改善\n- **官方應對措施**：\n  - Ivanti 於 2024-01-10 發布緩解方案 XML 設定檔（mitigation.xml），封鎖受影響的 Web 請求路徑。 `[已確認事實]`\n  - CISA 於 2024-01-19 與 2024-01-31 發布應急指南，要求所有聯邦機構徹底備份日誌並隔離檢測。 `[已確認事實]`\n  - Ivanti 自 2024-01-31 起分批釋出正式修補韌體版本。 `[已確認事實]`\n- **漏洞修補方式**：\n  - 部署 Ivanti 官方修補韌體。 `[已確認事實]`\n  - 執行官方外部完整性檢查工具 (External ICT) 進行二進位雜湊比對。 `[已確認事實]`\n- **後續改善**：\n  - 撤銷並重設所有曾通過該 VPN 認證之 AD 網域帳號、服務帳號及 Kerberos 票證（KRBTGT）。 `[已確認事實]`\n  - 撤銷並重新簽發 VPN 伺服器與 CA 憑證。 `[已確認事實]`\n  - 限制 VPN 管理介面僅限專用帶外管理網路（OOB）存取，禁止暴露於公開網際網路。 `[已確認事實]`\n",
+        "timeline": "# Ivanti Connect Secure 事件時間軸\n\n## 02. 事件時間軸\n\n> 以下時間軸彙整自 Volexity、Mandiant、CISA 及 Ivanti 官方公告之調查事證。\n\n| 時間點 (UTC) | 事件階段 | 詳細活動與說明 | 證據狀態 | 來源依據 |\n|---|---|---|---|---|\n| 2023-12-03 ~ 12-14 | 攻擊開始時間 | 威脅行動者 UNC5221 首次利用零時差漏洞鎖定特定目標進行邊界探測與突破 | `[已確認事實]` | Volexity 鑑識報告 |\n| 2023-12-14 | 攻擊被發現時間 | Volexity 威脅回應小組在客戶的 Ivanti ICS 設備上捕獲可疑 Web 請求與未授權修改 | `[已確認事實]` | Volexity 官方研究報告 |\n| 2024-01-10 | 官方公告時間 | Ivanti 官方發布安全通告確認 CVE-2023-46805 與 CVE-2024-21887，並提供臨時 XML 緩解腳本 | `[已確認事實]` | Ivanti 官方安全通告 |\n| 2024-01-15 | 攻擊大規模擴散 | 全球多個攻擊團夥取得漏洞細節，掃描與批量攻擊暴增，受害主體超過 2,100 台設備 | `[已確認事實]` | Shadowserver 統計數據 |\n| 2024-01-19 | CISA 發布緊急指令 | 美國 CISA 發布 ED 24-01 指令，要求聯邦機構限期套用緩解措施或直接離線 | `[已確認事實]` | CISA ED 24-01 公告 |\n| 2024-01-31 | 第一批官方補丁釋出 | Ivanti 正式發布首批受影響支援版本之韌體安全性更新，同時揭露另一漏洞 CVE-2024-21893 | `[已確認事實]` | Ivanti 官方發布通訊 |\n| 2024-02-01 | 全面斷網隔離指令 | CISA 升級指令，要求聯邦機構於 2 月 2 日前將所有受影響 ICS 閘道設備全面斷網下線 | `[已確認事實]` | CISA 補充指示 |\n| 2024-02-15 | 後續處置與重構 | 各大受害單位完成工廠重設、韌體刷新與內部全網憑證撤銷更新 | `[已確認事實]` | 業界事件應變綜合報告 |\n",
+        "technicalAnalysis": "# Ivanti Connect Secure 攻擊手法與技術分析\n\n## 03. 攻擊手法\n- **初始入侵途徑**：\n  - 攻擊者鎖定網際網路暴露之 Ivanti Connect Secure VPN 外部入口網站。\n  - 首先發送精心構造之 HTTP 請求利用 **CVE-2023-46805**（REST API 驗證控制路徑繞過漏洞），規避 `/api/v1/cav/` 端點的權限查核。 `[已確認事實]`\n  - 接著透過內部 API 端點觸發 **CVE-2024-21887**，在命令引數中注入 shell 元字元（Command Injection），以 `root` 特權執行任意指令。 `[已確認事實]`\n- **攻擊者使用的技術 (MITRE ATT&CK)**：\n  - `T1190` - Exploit Public-Facing Application（利用公開應用程式漏洞）\n  - `T1505.003` - Server Software Component: Web Shell（植入 Web Shell）\n  - `T1562.001` - Impair Defenses: Disable or Modify Tools（篡改完整性檢查工具）\n  - `T1003` - OS Credential Dumping（傾印登入憑證）\n- **攻擊執行流程**：\n  ```mermaid\n  flowchart TD\n      A[\"攻擊者發送惡意 HTTP 請求\"] --> B[\"CVE-2023-46805: 繞過 /api/v1 驗證\"]\n      B --> C[\"CVE-2024-21887: 命令注入取得 root shell\"]\n      C --> D[\"植入 WIREFIRE / GLASSTOKEN Web Shell\"]\n      D --> E[\"篡改內建 ICT 完整性檢測腳本 (防禦規避)\"]\n      E --> F[\"傾印內存快取之使用者 AD 憑證與金鑰\"]\n      F --> G[\"橫向移動侵入內部企業網路\"]\n  ```\n- **使用的惡意程式或工具**：\n  - **WIREFIRE**：輕量級 Python Web Shell，植入於組態處理組件，專門接收外部 Base64 編碼指令。 `[已確認事實]`\n  - **GLASSTOKEN**：針對 JavaScript 前端框架注入的後門，偽裝成合法 API 端點。 `[已確認事實]`\n  - **WARPWIRE**：注入於登入頁面之認證竊密 JavaScript 腳本，明文攔截提交之帳密。 `[已確認事實]`\n\n## 04. 技術分析\n- **漏洞或攻擊技術**：\n  - **CVE-2023-46805 (CVSS 8.2)**：位於 Web 伺服器之路由轉發規則，對 `/api/v1/cav/client/status/../../` 等目錄穿越樣式未妥善規範化，使攻擊者能未經身份驗證直接觸發受保護的管理介面。\n  - **CVE-2024-21887 (CVSS 9.1)**：位於 `/api/v1/license/keys-status/` 等 API 的後端 Python 腳本，直接將外部輸入未經清理拼接至 shell 指令執行，導致無條件任意命令執行。\n- **IOC（入侵指標）**：\n  - **Web Shell 檔案路徑**：\n    - `/home/perl/licenseserver.cgi`\n    - `/pkg/do-install/wirefire.py`\n  - **檔案雜湊 (SHA256)**：\n    - `06b4791e84b1d61996d9101c7847b2c0fd3230c45de19c438c64d85ccb6b8d96` (WARPWIRE 竊密器)\n    - `9c0f991f86f5c8774706beeb3d97f5a9f8f9024f9e160e181be3c0b0373fb398` (WIREFIRE Web Shell)\n  - **惡意連線 IP 與 C2**：\n    - `206.189.208.156` (探測與初始載入)\n    - `75.145.243.85` (C2 通訊站點)\n- **網路行為**：利用現有 443/TCP TLS 通道偽裝回傳流量，隱匿於正常的 HTTPS 業務流量中。 `[已確認事實]`\n- **系統與程序行為**：攻擊者執行 `mount -o remount,rw /` 將唯讀分區重新掛載為可讀寫，隨後改寫系統 Python 函式庫，並清除 `/data/var/dlogs` 下的審計事件紀錄。 `[已確認事實]`\n",
+        "references": "# Ivanti Connect Secure 研究心得與參考資料\n\n## 07. 研究心得\n- **攻擊與修補技術**：\n  - 本事件凸顯了傳統「邊界設備安全孤島」的脆弱性。多數企業常假設 VPN 網路閘道本身受到嚴密原廠保護，因而未在其上部署 EDR 或細粒度行為日誌轉送。\n  - 攻擊者非常熟悉原廠的完整性檢查工具 (Integrity Checker Tool, ICT)，並精準篡改其排除清單與回傳值，使內建安全工具回報「系統完整無異常」，造成了嚴重的假安全感（False Sense of Security）。\n- **尚待釐清的問題**：\n  - UNC5221 如何在公開披露前如此精準掌握 Ivanti 私有 API 的代碼漏洞？是否涉及先前的軟體供應鏈原始碼洩漏，仍有待更進一步的威脅情資驗證。 `[尚待確認]`\n- **事件關聯性**：\n  - 此攻擊鏈手法與 2021 年 Pulse Secure VPN (CVE-2021-22893) 以及 2022 年 FortiOS SSL-VPN (CVE-2022-42475) 的攻擊模式具有高度技術一致性，顯示邊界專屬網通設備已成為國家級進階持續威脅（APT）的首選跳板。\n- **個人觀察**：\n  - 單純依賴「網路邊界防護」已不再安全。若不具備設備帶外完整性即時遙測與微分段（Micro-segmentation），一旦邊界突破，整個內網便形同門戶洞開。\n\n## 08. 參考資料\n- **官方公告**：\n  - [Ivanti Security Advisory: CVE-2023-46805 and CVE-2024-21887](https://forums.ivanti.com/s/article/KB-CVE-2023-46805-Authentication-Bypass-CVE-2024-21887-Command-Injection-for-Ivanti-Connect-Secure-and-Ivanti-Policy-Secure-Gateways) - Ivanti Official, 發布日期：2024-01-10\n  - [CISA Emergency Directive 24-01: Mitigate Ivanti Connect Secure and Ivanti Policy Secure Vulnerabilities](https://www.cisa.gov/news-events/directives/ed-24-01-mitigate-ivanti-connect-secure-and-ivanti-policy-secure-vulnerabilities) - CISA, 發布日期：2024-01-19\n- **技術研究報告**：\n  - [Active Exploitation of Two Zero-Day Vulnerabilities in Ivanti Connect Secure VPN](https://www.volexity.com/blog/2024/01/10/active-exploitation-of-two-zero-day-vulnerabilities-in-ivanti-connect-secure-vpn/) - Volexity Threat Research, 發布日期：2024-01-10\n  - [Suspected APT Targets Ivanti Connect Secure VPN in Global Campaign](https://cloud.google.com/blog/topics/threat-intelligence/investigating-ivanti-zero-day-exploitation) - Mandiant (Google Cloud), 發布日期：2024-01-12\n- **其他可信來源**：\n  - [NVD - CVE-2023-46805 Detail](https://nvd.nist.gov/vuln/detail/CVE-2023-46805) - NIST NVD, 發布日期：2024-01-12\n  - [NVD - CVE-2024-21887 Detail](https://nvd.nist.gov/vuln/detail/CVE-2024-21887) - NIST NVD, 發布日期：2024-01-12\n"
+      }
+    }
+  ],
+  "techniques": [
+    {
+      "id": "phishing",
+      "title": "魚叉式網路釣魚 (Spearphishing)",
+      "mitreId": "T1566",
+      "tactic": "Initial Access",
+      "severity": "High",
+      "summary": "攻擊者透過客製化偽造郵件或即時通訊，誘騙特定目標點擊惡意連結、下載偽裝文件或輸入帳號憑證，是目前威脅組織突破企業邊界最普及的手法之一。",
+      "content": "\n# 魚叉式網路釣魚 (Spearphishing - T1566)\n\n## 1. 技術概念與原理\n- 攻擊者在行動前進行充分的開源情報收集（OSINT），鎖定目標組織中具備高權限或財務權限的特定員工。\n- 郵件內容高度仿真（偽裝為人力資源政策、薪資調整、重要供應商發票或 IT 密碼重設通知），藉此大幅降低被害人的戒心。\n- 現代釣魚常結合「逆向代理釣魚框架」（如 Evilginx），即時攔截並竊取使用者輸入之 OTP 雙因素認證 Session Token，有效繞過傳統簡訊或 App 推播驗證。\n\n## 2. 常見利用情境與攻擊流程\n- **附件誘導**：帶有密碼保護之 ZIP/7z 壓縮檔，內部包含 LNK 捷徑檔、OneNote 筆記或惡意 ISO 鏡像檔，用以規避安全郵件閘道（SEG）之靜態掃描。\n- **OAuth 授權釣魚（Consent Phishing）**：誘騙使用者授權惡意第三方應用程式存取其 Microsoft 365 / Google Workspace 郵件與雲端檔案，無需竊取密碼即可長期潛伏。\n\n## 3. 關聯資安事件\n- 歷史上眾多 APT 攻擊行動（如 APT28、Lazarus）皆以高度客製化的魚叉釣魚做為第一道突破口。\n- 亦常見於憑證竊取鏈條中，作為勒索軟體初始存取仲介（Initial Access Broker, IAB）的標準作案工具。\n\n## 4. 偵測與防禦對策\n- **抗釣魚多因素驗證（Phishing-Resistant MFA）**：導入基於 FIDO2 / WebAuthn 的硬體安全金鑰，從密碼學層面徹底根除反向代理釣魚攔截。\n- **郵件防護協議**：全面落實 SPF、DKIM 與 DMARC（配置 `p=reject` 策略）。\n- **進階行為分析**：監控使用者終端上下文中 Office 或瀏覽器程序是否異常衍生 `powershell.exe` 或 `cmd.exe` 等子程序。\n",
+      "fileName": "phishing.md"
+    },
+    {
+      "id": "privilege-escalation",
+      "title": "憑證存取與特權提升 (OS Credential Dumping)",
+      "mitreId": "T1003",
+      "tactic": "Credential Access",
+      "severity": "Critical",
+      "summary": "攻擊者透過記憶體傾印、註冊表提取或攔截認證協定，取得本機使用者或網域管理員的純文字密碼、NTLM 雜湊值與 Kerberos 票據，進而取得企業最高控制權。",
+      "content": "\n# 憑證存取與特權提升 (T1003)\n\n## 1. 技術概念與原理\n- 在 Windows 網域環境中，`lsass.exe`（Local Security Authority Subsystem Service）進程負責處理使用者登入認證並快取憑證。\n- 具備本機管理者權限的攻擊者通常利用工具（如 Mimikatz、ProcDump）讀取 LSASS 記憶體，直接提取 NTLM 雜湊值進行 Pass-the-Hash 橫向攻擊，或偽造黃金票據（Golden Ticket）。\n\n## 2. 常見利用情境與攻擊流程\n- **LSASS 傾印**：呼叫 `MiniDumpWriteDump` API 或利用合法驅動直接讀取記憶體頁面。\n- **NTDS.dit 提取**：從網域控制器（DC）備份或磁碟快照複製 Active Directory 資料庫 `ntds.dit` 及 `SYSTEM` 註冊表配置單元，離線破解全域帳密。\n- **DPAPI 竊取**：解密本機存放於瀏覽器、RDP 用戶端或憑證管理員中的已儲存密碼。\n\n## 3. 關聯資安事件\n- [2024-01-15-ivanti-connect-secure](../incidents/2024/2024-01-15-ivanti-connect-secure/index.md)：攻擊者在 VPN 設備內存提取快取之網域帳號憑證。\n- [2024-02-21-change-healthcare-ransomware](../incidents/2024/2024-02-21-change-healthcare-ransomware/index.md)：攻擊者於內網潛伏期間實施憑證傾印，取得網域最高管理員權限。\n\n## 4. 偵測與防禦對策\n- **開啟 Credential Guard (LSA Protection)**：利用虛擬化安全技術（VBS）將 LSASS 敏感密鑰隔離於獨立受保護的沙箱中。\n- **限制除錯權限 (SeDebugPrivilege)**：嚴格限制只有專屬安全管理員群組擁有除錯本機進程之特權。\n- **監控敏感 API 呼叫**：透過 Sysmon Event ID 10 監控非系統正常程序存取 `lsass.exe` 的行為特徵。\n",
+      "fileName": "privilege-escalation.md"
+    },
+    {
+      "id": "ransomware",
+      "title": "勒索軟體與資料加密衝擊 (Data Encrypted for Impact)",
+      "mitreId": "T1486",
+      "tactic": "Impact",
+      "severity": "Critical",
+      "summary": "攻擊者透過強對稱與非對稱加密演算法對目標系統內的關鍵資料進行不可逆加密，並破壞系統還原備份點，藉由癱瘓業務向受害組織勒索高額解密贖金。",
+      "content": "\n# 勒索軟體與資料加密衝擊 (T1486)\n\n## 1. 技術概念與原理\n- 現代勒索軟體多採用**雙重勒索（Double Extortion）**甚至**三重勒索（Triple Extortion）**模式：\n  1. 第一重：加密受害伺服器與虛擬機器磁碟，造成營運癱瘓。\n  2. 第二重：在加密前預先竊取數百 GB 至數 TB 的商業機密或敏感個資，威脅若不付贖金即公諸於暗網。\n  3. 第三重：向受害者的客戶、供應商發送威脅郵件，或發起 DDoS 攻擊加重受害單位營運壓力。\n- 加密實作：通常使用混合加密體系，對每個檔案使用隨機生成的 AES-256 或 ChaCha20 金鑰加密，並使用攻擊者的 RSA-4096 / Curve25519 公鑰加密該對稱金鑰，確保無私鑰時數學上無法解密。\n\n## 2. 常見利用情境與攻擊流程\n- **防禦抑制與前置清理**：\n  - 呼叫 `vssadmin` 刪除磁碟快照（Volume Shadow Copies）。\n  - 使用 Windows Restart Manager 或終止 SQL、Exchange 相關程序以釋放檔案鎖（File Locks）。\n  - 停用 Windows Defender 或透過 BYOVD（自帶易受攻擊驅動程式）終止 EDR 防護程序。\n- **快速加密演算法**：採用「間歇性加密（Intermittent Encryption）」技術，僅加密檔案頭尾或特定區塊，在大幅提升加密速度的同時依然達成毀壞檔案結構的效果。\n\n## 3. 關聯資安事件\n- [2024-02-21-change-healthcare-ransomware](../incidents/2024/2024-02-21-change-healthcare-ransomware/index.md)：ALPHV/BlackCat 勒索軟體摧毀醫療交易系統，造成全美醫療核銷停擺。\n\n## 4. 偵測與防禦對策\n- **3-2-1-1-0 備份原則**：保存 3 份資料、2 種不同儲存媒介、1 處異地備份、1 份離線不可篡改備份（Immutable Backup）、0 備份還原錯誤驗證。\n- **金絲雀檔案（Canary Files）與大量檔案寫入偵測**：在檔案伺服器監控目錄短時間內的異常檔名變更頻率與高熵（High Entropy）寫入行為。\n- **嚴格網路分段**：避免備份管理網段（如 Veeam）與一般 Active Directory 網域產生信任串聯。\n",
+      "fileName": "ransomware.md"
+    }
+  ],
+  "vulnerabilities": [
+    {
+      "cveId": "CVE-2023-46805",
+      "title": "Ivanti Connect Secure 身份驗證繞過漏洞",
+      "cvss": "8.2",
+      "severity": "High",
+      "cwe": "CWE-287",
+      "affectedSystems": "Ivanti Connect Secure 9.x, 22.x; Ivanti Policy Secure 9.x, 22.x",
+      "patchStatus": "Available",
+      "publishedDate": "2024-01-10",
+      "summary": "Ivanti Connect Secure 之 Web 介面存在路徑驗證缺失，使未經驗證之遠端攻擊者能透過特定目錄穿越路徑繞過權限查核，直接存取受保護的內部管理 API 端點。",
+      "content": "\n# CVE-2023-46805: Ivanti Connect Secure 身份驗證繞過漏洞\n\n## 1. 漏洞詳細技術機理\n- 位於 Web 控制組件對特定 URI 路徑模式（如 `/api/v1/cav/client/status/../../`）的正則匹配弱點。\n- 轉發處理模組在未進行路徑正規化（URL Normalization）前即放行請求，導致後續 API 控制器誤以為該請求已通過前端認證，形成授權繞過。\n\n## 2. 受影響系統與版本\n- **受影響版本**：Ivanti Connect Secure 9.x 系列與 22.x 系列所有釋出版本；Ivanti Policy Secure 系列。\n- **已修復版本**：原廠發布之 22.4R2.2、22.5R1.1 等安全性韌體更新。\n\n## 3. 在野利用與關聯事件\n- **CISA KEV 收錄日期**：2024-01-11\n- **關聯事件**：[2024-01-15-ivanti-connect-secure](../incidents/2024/2024-01-15-ivanti-connect-secure/index.md)\n- 通常與命令注入漏洞 **CVE-2024-21887** 結合使用，形成未授權的完整遠端代碼執行攻擊鏈（Exploit Chain）。\n\n## 4. 官方修補與緩解措施\n- 立即套用 Ivanti 官方發布之韌體更新。\n- 臨時處置：匯入原廠提供的 `mitigation.xml` 配置，將包含特定關鍵字之路徑重導向至安全拒絕頁面。\n",
+      "fileName": "CVE-2023-46805.md"
+    },
+    {
+      "cveId": "CVE-2024-21887",
+      "title": "Ivanti Connect Secure 命令注入遠端執行漏洞",
+      "cvss": "9.1",
+      "severity": "Critical",
+      "cwe": "CWE-77",
+      "affectedSystems": "Ivanti Connect Secure 9.x, 22.x; Ivanti Policy Secure 9.x, 22.x",
+      "patchStatus": "Available",
+      "publishedDate": "2024-01-10",
+      "summary": "Ivanti Connect Secure 之多個管理組件中存在指令注入弱點，具備管理員權限（或配合 CVE-2023-46805 認證繞過）之攻擊者可發送惡意請求，以 root 系統特權執行任意命令。",
+      "content": "\n# CVE-2024-21887: Ivanti Connect Secure 命令注入遠端執行漏洞\n\n## 1. 漏洞詳細技術機理\n- 位於後端 Python 服務處理授權授信狀態（License Status）的 API 端點。\n- 腳本在接收使用者傳入的參數時，未經轉義即拼裝入系統 Shell 指令（如使用 `os.system` 或未過濾的子進程調用），使得透過插入 `;` 或 `&` 等元字元即可無約束執行作業系統指令。\n\n## 2. 受影響系統與版本\n- **受影響版本**：Ivanti Connect Secure 9.x 及 22.x 全版本。\n- **不受影響/已修復版本**：2024 年 1 月底後陸續推出的正式韌體修正補丁。\n\n## 3. 在野利用與關聯事件\n- **CISA KEV 收錄日期**：2024-01-11\n- **關聯事件**：[2024-01-15-ivanti-connect-secure](../incidents/2024/2024-01-15-ivanti-connect-secure/index.md)\n- 威脅團夥在野將其用於執行惡意 curl/wget 腳本，直接將 Web Shell 下載並寫入唯讀分區。\n\n## 4. 官方修補與緩解措施\n- 升級至官方安全韌體版本。\n- 進行出廠重設（Factory Reset）並驗證檔案完整性檢測指標，確認無遺留之 Web Shell 後門。\n",
+      "fileName": "CVE-2024-21887.md"
+    }
+  ],
+  "researchNotes": [
+    {
+      "id": "malware-analysis",
+      "title": "逆向分析：惡意程式持久化與反鑑識技術筆記",
+      "author": "Cyber Incident Research Team",
+      "date": "2024-03-01",
+      "tags": [
+        "Reverse-Engineering",
+        "Anti-Forensics",
+        "Persistence",
+        "Research"
+      ],
+      "summary": "深入探討現代進階威脅中常見的反鑑識技術，包括分區重掛載、排程任務混淆、內建安全檢測工具篡改以及記憶體只讀保護規避手法。",
+      "content": "\n# 逆向分析：惡意程式持久化與反鑑識技術筆記\n\n## 1. 研究背景與核心問題\n在研究如 [Ivanti Connect Secure 零時差漏洞利用事件](../incidents/2024/2024-01-15-ivanti-connect-secure/index.md) 等邊界網通設備事件時，發現威脅行動者最引人注目的特徵已不僅是 Exploit 本身，而是極度細緻的**反鑑識（Anti-Forensics）手法**。\n\n## 2. 關鍵技術機理剖析\n- **動態唯讀分區重掛載**：\n  - 許多嵌入式網路設備將根目錄 `/` 掛載為 `ro`（唯讀）。\n  - 攻擊者在取得 root shell 後，第一時間執行 `mount -o remount,rw /`，使其可對硬體分區進行永久性二進位替換。\n- **篡改系統內建完整性檢測器（ICT Bypass）**：\n  - 逆向分析發現，攻擊者並未刪除檢測工具，而是直接修改其 Python 檢查腳本中的正規表達式與排除清單（Exclusion List）。\n  - 當系統管理員排程執行檢查時，腳本被強迫略過惡意 Web Shell 所在的路徑，導致「系統回報一切正常，但後門持續長駐」。\n\n## 3. 待釐清問題與研究展望\n- 當前多數 IoT 與 Network Appliance 缺乏如同 Linux IMA (Integrity Measurement Architecture) 或硬體 TPM Secure Boot 的唯讀硬體根信任機制。\n- 後續將持續研究利用 eBPF 或帶外遠端記憶體取證（Out-of-band Memory Forensics）突破黑盒子設備分析盲點之可行性。\n",
+      "fileName": "malware-analysis.md"
+    },
+    {
+      "id": "network-forensics",
+      "title": "網路鑑識：勒索軟體橫向移動與大規模資料滲漏特徵分析",
+      "author": "Cyber Incident Research Team",
+      "date": "2024-03-20",
+      "tags": [
+        "Forensics",
+        "Ransomware",
+        "Data-Exfiltration",
+        "Network-Traffic"
+      ],
+      "summary": "分析雙重勒索行動中資料打包與外洩階段的網路封包特徵，探討如何利用 NetFlow、DNS 日誌與 TLS 憑證異常在加密前即時阻斷外洩通道。",
+      "content": "\n# 網路鑑識：勒索軟體橫向移動與大規模資料滲漏特徵分析\n\n## 1. 研究背景\n以 [Change Healthcare 勒索事件](../incidents/2024/2024-02-21-change-healthcare-ransomware/index.md) 為例，攻擊者在內網潛伏長達 9 天並外洩超過 4TB 的敏感資料。如果在資料滲漏（Exfiltration）階段能被及時攔截，即可大幅減輕後續勒索造成的災難性衝擊。\n\n## 2. 核心流量特徵分析\n- **合法工具雙重利用（Living off the Land）**：\n  - 威脅行動者幾乎不再自行開發上傳工具，而是大量使用 `Rclone`、`MegaCmd` 或 `FileZilla`。\n  - 特徵：出站連線多指向知名公有雲端儲存（如 Mega.nz、Wasabi、AWS S3、OneDrive）。\n- **流量異常特徵**：\n  - 短時間內特定內部主機與單一外部網域之間出現長時間維持且頻寬接近飽和的 TLS 連線。\n  - 統計封包大小分佈，上行資料量遠大於下行資料量（Up/Down 比例極度失衡，如 100:1）。\n\n## 3. 防禦與早期預警策略\n- **DNS 查詢監控**：對非企業內部指定雲端儲存之網域名稱查詢發出安全告警。\n- **微分段出站過濾**：資料庫核心主機與備份系統嚴格禁止直接建立任何公網 HTTPS 出站連線，所有資料轉移一律通過受審查的代理伺服器。\n",
+      "fileName": "network-forensics.md"
+    }
+  ],
+  "sources": [
+    {
+      "title": "UnitedHealth Group Update on Change Healthcare Cyberattack",
+      "url": "https://www.unitedhealthgroup.com/ns/changehealthcare.html",
+      "note": "UHG 官方更新公告，發布日期：2024-02-22",
+      "incidentId": "2024-02-21-change-healthcare-ransomware",
+      "incidentTitle": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件"
+    },
+    {
+      "title": "Senate Finance Committee Hearing: Examining the Cyberattack on UnitedHealth Group",
+      "url": "https://www.finance.senate.gov/hearings/examining-the-cyberattack-on-change-healthcare",
+      "note": "美國參議院財政委員會聽證紀錄，發布日期：2024-05-01",
+      "incidentId": "2024-02-21-change-healthcare-ransomware",
+      "incidentTitle": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件"
+    },
+    {
+      "title": "CISA Cybersecurity Advisory: ALPHV/BlackCat Ransomware",
+      "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-353a",
+      "note": "CISA / FBI Joint Advisory，發布日期：2023-12-19",
+      "incidentId": "2024-02-21-change-healthcare-ransomware",
+      "incidentTitle": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件"
+    },
+    {
+      "title": "Mandiant Incident Response Insights into Recent Health Sector Attacks",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+      "note": "Google Cloud Mandiant，發布日期：2024-03-15",
+      "incidentId": "2024-02-21-change-healthcare-ransomware",
+      "incidentTitle": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件"
+    },
+    {
+      "title": "UnitedHealth CEO Tells Congress One Server Lacked Multi-Factor Authentication",
+      "url": "https://krebsonsecurity.com/2024/05/unitedhealth-ceo-tells-congress-one-server-lacked-mfa/",
+      "note": "Krebs on Security，發布日期：2024-05-01",
+      "incidentId": "2024-02-21-change-healthcare-ransomware",
+      "incidentTitle": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件"
+    },
+    {
+      "title": "Change Healthcare Ransomware Fallout: What You Need to Know",
+      "url": "https://www.bleepingcomputer.com/news/security/change-healthcare-cyberattack-what-we-know-so-far/",
+      "note": "BleepingComputer，發布日期：2024-03-05",
+      "incidentId": "2024-02-21-change-healthcare-ransomware",
+      "incidentTitle": "Change Healthcare 醫療結算網絡癱瘓與勒索軟體事件"
+    },
+    {
+      "title": "Ivanti Security Advisory: CVE-2023-46805 and CVE-2024-21887",
+      "url": "https://forums.ivanti.com/s/article/KB-CVE-2023-46805-Authentication-Bypass-CVE-2024-21887-Command-Injection-for-Ivanti-Connect-Secure-and-Ivanti-Policy-Secure-Gateways",
+      "note": "Ivanti Official, 發布日期：2024-01-10",
+      "incidentId": "2024-01-15-ivanti-connect-secure",
+      "incidentTitle": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件"
+    },
+    {
+      "title": "CISA Emergency Directive 24-01: Mitigate Ivanti Connect Secure and Ivanti Policy Secure Vulnerabilities",
+      "url": "https://www.cisa.gov/news-events/directives/ed-24-01-mitigate-ivanti-connect-secure-and-ivanti-policy-secure-vulnerabilities",
+      "note": "CISA, 發布日期：2024-01-19",
+      "incidentId": "2024-01-15-ivanti-connect-secure",
+      "incidentTitle": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件"
+    },
+    {
+      "title": "Active Exploitation of Two Zero-Day Vulnerabilities in Ivanti Connect Secure VPN",
+      "url": "https://www.volexity.com/blog/2024/01/10/active-exploitation-of-two-zero-day-vulnerabilities-in-ivanti-connect-secure-vpn/",
+      "note": "Volexity Threat Research, 發布日期：2024-01-10",
+      "incidentId": "2024-01-15-ivanti-connect-secure",
+      "incidentTitle": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件"
+    },
+    {
+      "title": "Suspected APT Targets Ivanti Connect Secure VPN in Global Campaign",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/investigating-ivanti-zero-day-exploitation",
+      "note": "Mandiant (Google Cloud), 發布日期：2024-01-12",
+      "incidentId": "2024-01-15-ivanti-connect-secure",
+      "incidentTitle": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件"
+    },
+    {
+      "title": "NVD - CVE-2023-46805 Detail",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-46805",
+      "note": "NIST NVD, 發布日期：2024-01-12",
+      "incidentId": "2024-01-15-ivanti-connect-secure",
+      "incidentTitle": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件"
+    },
+    {
+      "title": "NVD - CVE-2024-21887 Detail",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-21887",
+      "note": "NIST NVD, 發布日期：2024-01-12",
+      "incidentId": "2024-01-15-ivanti-connect-secure",
+      "incidentTitle": "Ivanti Connect Secure 零時差漏洞連鎖利用攻擊事件"
+    }
+  ]
+}
